@@ -3,3 +3,4 @@ gunicorn
 flask_restful
 flask_cors
 pandas
+prediction

@@ -30,6 +30,7 @@ class GetPredictionOutput(Resource):
     def post(self):
         try:
             data = request.get_json()
+            print(data)
             predict = prediction.predict_exercise(data)
             predictOutput = predict
             return {'predict':predictOutput}

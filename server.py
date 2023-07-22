@@ -31,6 +31,8 @@ class GetPredictionOutput(Resource):
     def post(self):
         try:
             data = request.get_json()
+            print("#############################")
+            print(data)
             predict = prediction1.predict_exercise(data)
             predictOutput = predict
             return {'predict':predictOutput}
@@ -42,6 +44,7 @@ class prediction1():
     # save the iris classification model as a pickle file
 
     def predict_exercise(config):
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         print(config)
         model_pkl_file = "finalized_model_accuracy.sav"
         # load model from pickle file

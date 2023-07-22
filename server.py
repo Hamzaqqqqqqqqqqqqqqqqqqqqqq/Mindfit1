@@ -46,7 +46,7 @@ class prediction1():
     def predict_exercise(config):
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         print(config)
-        model_pkl_file = "finalized_model_accuracy.sav"
+        model_pkl_file = "./finalized_model_accuracy.sav"
         # load model from pickle file
         with open(model_pkl_file, 'rb') as file:
             model = pickle.load(file)

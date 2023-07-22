@@ -31,6 +31,7 @@ class GetPredictionOutput(Resource):
     def post(self):
         try:
             data = request.get_json()
+            print(os.getcwd())
             print("#############################")
             print(data)
             predict = prediction1.predict_exercise(data)

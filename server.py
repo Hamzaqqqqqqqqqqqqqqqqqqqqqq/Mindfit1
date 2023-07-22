@@ -2,7 +2,8 @@ from flask import Flask, request, redirect
 from flask_restful import Resource, Api
 from flask_cors import CORS
 import os
-import prediction
+
+import pickle
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -30,13 +31,37 @@ class GetPredictionOutput(Resource):
     def post(self):
         try:
             data = request.get_json()
-            print(data)
-            predict = prediction.predict_exercise(data)
+            predict = prediction1.predict_exercise(data)
             predictOutput = predict
             return {'predict':predictOutput}
 
         except Exception as error:
             return {'error': error}
+
+class prediction1():
+    # save the iris classification model as a pickle file
+
+    def predict_exercise(config):
+        print(config)
+        model_pkl_file = "finalized_model_accuracy.sav"
+        # load model from pickle file
+        with open(model_pkl_file, 'rb') as file:
+            model = pickle.load(file)
+
+        # config = {
+        #     'type': [1],  # 1- Male, 2- Female
+        #     'values': [1, 2, 3],
+        # }
+
+        print(type(config['values']))
+        print(type([1, 2, 3]))
+
+        values = config['values']
+        # print(model.predict([[1,2,3]]))
+
+        predicted_value = model.predict([values])
+        print(predicted_value)
+        return predicted_value[0]
 
 api.add_resource(Test,'/')
 api.add_resource(GetPredictionOutput,'/getPredictionOutput')

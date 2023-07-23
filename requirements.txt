@@ -4,3 +4,4 @@ flask_restful
 flask_cors
 pandas
 boto3
+scikit-learn

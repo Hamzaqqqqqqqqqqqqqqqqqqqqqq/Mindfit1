@@ -39,7 +39,8 @@ def download_file(space_name, region_name, file_name):
         model = pickle.load(file_stream)
         return model
         #print("Data written to ->" + local_path)
-    except:
+    except Exception as e:
+        print("Error:", e)
         print("Error: Maybe file does not exist, or check the path you are saving to ")
         print("Usage: download file_to_download_from_the_space file_name_to_save_on_disk")
         print("Ex: download mytest-from-cloud docs.txt")
